@@ -9,7 +9,7 @@ defmodule MediumGraphql.Accounts.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
-    field :role, :string
+    field :role, :string, default: "user"
 
     timestamps()
   end
