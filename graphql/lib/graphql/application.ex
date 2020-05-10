@@ -6,14 +6,17 @@ defmodule Graphql.Application do
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
       # Start the Ecto repository
       Graphql.Repo,
-      # Start the endpoint when the application starts
+      # Start the Telemetry supervisor
+      GraphqlWeb.Telemetry,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Graphql.PubSub},
+      # Start the Endpoint (http/https)
       GraphqlWeb.Endpoint
-      # Starts a worker by calling: Graphql.Worker.start_link(arg)
-      # {Graphql.Worker, arg},
+      # Start a worker by calling: Graphql.Worker.start_link(arg)
+      # {Graphql.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

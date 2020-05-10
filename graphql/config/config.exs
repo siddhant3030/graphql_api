@@ -13,9 +13,10 @@ config :graphql,
 # Configures the endpoint
 config :graphql, GraphqlWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "SSjYmHqZYdANbK0x+41CEeyHqKtr3t2T5tcociJAq0FviDAa5jdU/YwcCpKX0n4a",
-  render_errors: [view: GraphqlWeb.ErrorView, accepts: ~w(json)],
-  pubsub: [name: Graphql.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "rZ66f0wtXtqW2fzxf83xQo5MtxNNxUKtxa1j+ts+4am6xVaQCDytHmW/IPHcjBhO",
+  render_errors: [view: GraphqlWeb.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: Graphql.PubSub,
+  live_view: [signing_salt: "74s0nBSs"]
 
 # Configures Elixir's Logger
 config :logger, :console,
